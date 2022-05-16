@@ -1,0 +1,32 @@
+<%- include ('./lay-outs/head') %>
+    <h1>url shrinking</h1>
+    <form action="/shortUrl" method="post" class="my-4 form-inline">
+        <!-- <label for="fullUrl" class="sr-only">url</label> -->
+        <input type="url" placeholder="url" name="fullUrl" id="fullUrl" class="form-control col my-2" required>
+        <button type="submit" class="btn btn-success">submit</button>
+    </form>
+    <table class="table table-striped tabel-responsive">
+        <thead>
+            <tr>
+                <th>full url</th>
+                <th>short url</th>
+                <th>clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% urls.forEach(u=>{ %>
+                <tr>
+                    <td> <a href="<%= u.full %> ">
+                            <%= u.full %>
+                        </a></td>
+                    <td> <a href="<%= u.short %>">
+                            <%= u.short %>
+                        </a></td>
+                    <td>
+                        <%= u.clicks %>
+                    </td>
+                </tr>
+                <%}) %>
+        </tbody>
+    </table>
+    <%- include ('./lay-outs/footer') %>
